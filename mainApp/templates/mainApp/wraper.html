@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    
+    <link rel="stylesheet" href="{% static 'mainApp/css/Style.css'%}">
+    <title>
+        {%block title%}
+        Сторніка
+        {%endblock%}
+       
+    </title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="conteiner">
+            <div class="header__inner">
+                <img src="" alt="" class="header__logo">
+                <ul class="nav">
+                    <li><a href="/">Головна</a></li>
+                    <li><a href="{% url 'category:index' %}">Категорії</a></li>
+                    <li><a href="">Топ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    {%block content%}
+    
+    {%endblock%}
+    <footer class="footer">
+        <div class="conteiner">
+            <div class="footer__inner">
+                <ul class="nav">
+                    <li><a href="">Головна</a></li>
+                    <li><a href="">Категорії</a></li>
+                    <li><a href="">Топ</a></li>
+                </ul>
+                <p class="footer_txt">2020</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

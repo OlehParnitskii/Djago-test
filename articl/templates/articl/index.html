@@ -1,0 +1,40 @@
+{%extends "mainApp/wraper.html"%}
+{%block title%}
+{{article.title}}
+{%endblock%}
+
+
+{%block content%}
+<div class="conteiner">
+
+       
+       
+
+        <h3>{{article.title}}</h3>
+        <p>
+            {{article.text|capfirst}}
+            
+        </p>
+        <img class="img" src="{{article.image.url}}" alt=""> 
+        
+        
+       
+        
+        <h5>{{article.date|date:"d:m:Y"}}</h5>
+       
+      
+
+{%for c in coments%}
+        <h2>{{c.autor_name}}</h2>     
+        <p>{{c.text}}</p>             
+{%endfor%}
+
+<form action="{% url 'articl:leave_coment' article.id %}" method="POST">
+    {% csrf_token %}
+
+    <input type="text" required placeholder="Ваше імя" name="name"><br>
+    <textarea name="text" placeholder="Текст коментаря" cols="30" rows="10"></textarea><br>
+    <button type="submit">Залишити коментярій</button>
+</form>
+</div>
+{%endblock%}

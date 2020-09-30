@@ -1,0 +1,24 @@
+{%extends "mainApp/wraper.html"%}
+{%block title%}
+Категорії
+{%endblock%}
+
+
+{%block content%}
+<div class="conteiner">
+<div class="category">
+    {%for cat in category%}
+    <div class="inner">
+        <div class="">
+        <img class="img" src="{{cat.image.url}}" alt=""> 
+    </div>
+    <div class="">
+    <a href="{% url 'category:category_detal' cat.id %}"><h3>{{cat.title}}</h3></a>
+    <p>{{cat.text}}</p>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+</div>
+{%endblock%}

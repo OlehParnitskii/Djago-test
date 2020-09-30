@@ -1,0 +1,62 @@
+{%extends "mainApp/wraper.html"%}
+{%block title%}
+Головна
+{%endblock%}
+
+
+{%block content%}
+<div class="conteiner">
+<section class="content">
+    
+    <section class="main_content">
+       
+       
+            <h3 class="slider__block_text">Заголовок</h3>
+            <a class="slider__block_btn" href="">Найкращі статі</a>
+            <div class="category">
+                {%for cat in category%}
+                <div class="inner">
+                    <div class="">
+                    <img class="img" src="{{cat.image.url}}" alt=""> 
+                </div>
+                <div class="">
+                <a href="{% url 'category:category_detal' cat.id %}"><h3>{{cat.title}}</h3></a>
+                <p>{{cat.text}}</p>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+
+            <form action="{% url 'mainApp:leave_email'%}" method="POST" class="form">
+                {% csrf_token %}
+            
+                <input type="text" required placeholder="Ваше імя" name="name"><br>
+                <input type="text" required placeholder="Ваше прізвище" name="surname"><br>
+                <input type="email" required placeholder="Ваш email" name="email"><br>
+                
+                <button type="submit">Залишити коментярій</button>
+            </form>
+    </section>
+    <section class="widget">
+        {%for post in articl%}
+       
+       
+
+        <a href="{% url 'articl:index' post.id %}"><h3>{{post.title}}</h3></a>
+        <p>
+            {{post.text|truncatewords:20 |capfirst}}
+            ...
+        </p>
+        <img class="img" src="{{post.image.url}}" alt=""> 
+        
+        
+       
+        
+        <h5>{{post.date|date:"d:m:Y"}}</h5>
+       
+        {%endfor%}
+    </section>
+
+</section>
+</div>
+{%endblock%}
